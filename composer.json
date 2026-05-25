@@ -1,0 +1,16 @@
+{
+    "name": "hexlet/code",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Dararabcenkova\\PhpProject48\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dASSharya",
+            "email": "dasharya299@me.com"
+        }
+    ],
+    "require": {}
+}
