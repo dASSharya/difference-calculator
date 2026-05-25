@@ -12,5 +12,7 @@
             "email": "dasharya299@me.com"
         }
     ],
-    "require": {}
+    "require": {
+        "docopt/docopt": "^1.0"
+    }
 }
