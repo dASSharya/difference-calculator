@@ -2,6 +2,7 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
+use function Docopt\docopt;
 
 $doc = <<<DOC
 Generate diff
@@ -17,4 +18,7 @@ Options:
   --format <fmt>                Report format [default: stylish]
 DOC;
 
-Docopt::handle($doc);
+
+$args = Docopt::handle($doc, [
+  'version' => 'gendiff 1.0.0'
+]);
