@@ -17,5 +17,11 @@
     },
     "bin": [
         "bin/gendiff"
-    ]
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^4.0"
+    },
+    "scripts": {
+    "lint": "phpcs --standard=PSR12 bin/gendiff src"
+}
 }
