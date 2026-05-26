@@ -2,6 +2,8 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../src/fileReader.php';
+require_once __DIR__ . '/../src/parser.php';
 
 use function Docopt\docopt;
 
@@ -11,7 +13,7 @@ Generate diff
 Usage:
   gendiff (-h|--help)
   gendiff (-v|--version)
-  gendiff [--format <fmt>] <firstFile> <secondFile>
+  gendiff <firstFile> <secondFile>
 
 Options:
   -h --help                     Show this screen
@@ -19,15 +21,22 @@ Options:
   --format <fmt>                Report format [default: stylish]
 DOC;
 
+
+
 $args = Docopt::handle($doc, [
   'version' => 'gendiff 1.0.0'
 ]);
 
+
 $firstFile = $args['<firstFile>'];
 $secondFile = $args['<secondFile>'];
-$format = $args['--format'];
+//$format = $args['--format'];
 
+$file1 = fileReader($firstFile);
+$file2 = fileReader($secondFile);
 
-echo $firstFile . PHP_EOL;
-echo $secondFile . PHP_EOL;
-echo $format . PHP_EOL;
+$data1 = parse($file1);
+$data2 = parse($file2);
+
+print_r($data1);
+print_r($data2);
