@@ -4,7 +4,11 @@
     "autoload": {
         "psr-4": {
             "Dararabcenkova\\PhpProject48\\": "src/"
-        }
+        },
+        "files": [
+          "src/compare.php",
+          "src/fileReader.php"
+      ]
     },
     "authors": [
         {
