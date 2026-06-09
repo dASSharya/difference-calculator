@@ -2,10 +2,9 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/fileReader.php';
-
 
 use function Docopt\docopt;
+use function App\genDiff;
 
 $doc = <<<DOC
 Generate diff
@@ -27,60 +26,11 @@ $args = Docopt::handle($doc, [
   'version' => 'gendiff 1.0.0'
 ]);
 
-
-$firstFile = $args['<firstFile>'];
-$secondFile = $args['<secondFile>'];
-//$format = $args['--format'];
-
-$file1 = fileReader($firstFile);
-$file2 = fileReader($secondFile);
-
-$data1 = json_decode($file1, true);
-$data2 = json_decode($file2, true);
-
-$sortedData1 = $data1;
-$sortedData2 = $data2;
-
-
-ksort($sortedData1);
-ksort($sortedData2);
-
-$mergedData = array_merge_recursive($sortedData1, $sortedData2);
-$intersectKeys = array_intersect_key($sortedData1, $sortedData2);
-$dif = array_diff_key($sortedData1, $sortedData2);
-$difOpposite = array_diff_key($sortedData2, $sortedData1);
 $result = [];
-$keys = array_unique(array_merge(
-  array_keys($data1),
-  array_keys($data2)
-));
 
-sort($keys);
-var_dump($keys);  
-
-$keys = array_unique(array_merge(
-  array_keys($data1),
-  array_keys($data2)
-));
-
-sort($keys);
-
-foreach ($keys as $key) {
-  $has1 = array_key_exists($key, $data1);
-  $has2 = array_key_exists($key, $data2);
-
-  if($has1 && $has2) {
-    if($data1[$key] === $data2[$key]) {
-      $result[$key] = $data1[$key];
-    } else {
-      $result["- $key"] = $data1[$key];
-      $result["+ $key"] = $data2[$key];
-    }
-  } elseif (!$has1) {
-    $result["+ $key"] = $data2[$key];
-  } elseif (!$has2) {
-    $result["- $key"] = $data1[$key];
-  }
-}
+$result = genDiff(
+  $args['<firstFile>'],
+  $args['<secondFile>']
+);
 
 print_r($result);
