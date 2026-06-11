@@ -1,9 +1,5 @@
 <?php
 
-namespace App;
-
-//use function App\fileReader;
-
 function genDiff(string $firstFile, string $secondFile)
 {
     $file1 = fileReader($firstFile);
