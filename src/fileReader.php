@@ -1,7 +1,5 @@
 <?php
 
-namespace App;
-
 function fileReader($path)
 {
     if (!file_exists($path)) {
