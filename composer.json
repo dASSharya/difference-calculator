@@ -25,7 +25,7 @@
     ],
     "require-dev": {
         "squizlabs/php_codesniffer": "^4.0",
-        "phpunit/phpunit": "^13.2"
+        "phpunit/phpunit": "^10"
     },
     "scripts": {
     "lint": "phpcs --standard=PSR12 bin/gendiff src",
