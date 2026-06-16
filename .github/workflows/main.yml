@@ -34,5 +34,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=YOUR_PROJECT_KEY
+            -Dsonar.projectKey=dASSharya_php-project-48
+            -Dsonar.organization=dassharya
             -Dsonar.sources=.
