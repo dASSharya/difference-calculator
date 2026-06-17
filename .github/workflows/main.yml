@@ -3,25 +3,37 @@ name: main
 on:
   push:
   pull_request:
-    
+
 jobs:
-    build:
-      runs-on: ubuntu-latest
-      
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
+  build:
+    runs-on: ubuntu-latest
 
-        - name: Setup PHP
-          uses: shivammathur/setup-php@v2
-          with:
-            php-version: '8.3'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-        - name: Install dependencies
-          run: make install
-        
-        - name: Run linter
-          run: make lint
-        
-        - name: Run test
-          run: make test
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Run linter
+        run: make lint
+
+      - name: Run test
+        run: make test
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v8.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=dASSharya_php-project-48
+            -Dsonar.organization=dassharya
+            -Dsonar.sources=.
