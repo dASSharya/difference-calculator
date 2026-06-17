@@ -37,3 +37,4 @@ jobs:
             -Dsonar.projectKey=dASSharya_php-project-48
             -Dsonar.organization=dassharya
             -Dsonar.sources=.
+            -Dsonar.php.coverage.reportPaths=build/logs/clover.xml
