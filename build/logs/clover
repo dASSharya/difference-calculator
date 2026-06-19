@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1781866063">
-  <project timestamp="1781866063">
+<coverage generated="1781866137">
+  <project timestamp="1781866137">
     <file name="/Users/dararabcenkova/Desktop/php-project-48/src/compare.php">
       <line num="5" type="stmt" count="2"/>
       <line num="6" type="stmt" count="2"/>

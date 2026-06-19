@@ -2,11 +2,8 @@
 
 function genDiff(string $firstFile, string $secondFile)
 {
-    $file1 = fileReader($firstFile);
-    $file2 = fileReader($secondFile);
-
-    $data1 = json_decode($file1, true);
-    $data2 = json_decode($file2, true);
+    $data1 = fileReader($firstFile);
+    $data2 = fileReader($secondFile);
 
     $resultArr = [];
 
