@@ -33,8 +33,24 @@ class genDiffTest extends TestCase
   public function testThrowsExceptionWhenFileDoesNotExist(): void
   {
     $this->expectException(\Exception::class); 
-
     gendiff($this->file1, __DIR__ . '/fixtures/empty.json');
   }
+  public function testThrowsExceptionWhenFileIsNotJsonorYaml(): void
+  {
+    $this->expectException(\Exception::class); 
+    gendiff($this->file1, __DIR__ . '/fixtures/strangeFormat.xml');
+  }
 
+  public function testFileReaderReturnRightArray(): void
+  {
+    $actual = fileReader($this->file1);
+    $expected = [
+      'host' => 'hexlet.io',
+      'timeout' => 50,
+      'proxy' => '123.234.53.22',
+      'follow' => null,
+    ];
+    print_r($expected);
+    $this->assertEquals($expected, $actual);
+  }
 }

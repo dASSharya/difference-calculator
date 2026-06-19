@@ -16,11 +16,17 @@ function fileReader($path)
         throw new \Exception("It's a directory: $path");
     }
 
-    $file = file_get_contents($path);
 
-    if (getFileExtension($path) == 'yaml' || getFileExtension($path) == 'yml') {
+    $file = file_get_contents($path);
+    $format = getFileExtension($path);
+    if ($format == 'yaml' || $format == 'yml') {
         return Yaml::parse($file, Yaml::PARSE_OBJECT_FOR_MAP);
-    } elseif (getFileExtension($path) == 'json') {
+    } elseif ($format == 'json') {
         return json_decode($file, true);
+    } else {
+      throw new \Exception("It's unsupported format: $format");
     }
+
+
+
 }
