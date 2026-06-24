@@ -53,4 +53,10 @@ class genDiffTest extends TestCase
     print_r($expected);
     $this->assertEquals($expected, $actual);
   }
+  
+  public function testThrowsExceptionWhenFileIsADir(): void
+  {
+    $this->expectException(\Exception::class);
+    gendiff($this->file1, __DIR__ . '/fixtures');
+  }
 }

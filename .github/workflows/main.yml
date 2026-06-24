@@ -18,6 +18,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
+          coverage: xdebug
 
       - name: Install dependencies
         run: make install
@@ -36,5 +37,6 @@ jobs:
           args: >
             -Dsonar.projectKey=dASSharya_php-project-48
             -Dsonar.organization=dassharya
-            -Dsonar.sources=.
+            -Dsonar.sources=src
+            -Dsonar.tests=tests
             -Dsonar.php.coverage.reportPaths=build/logs/clover.xml

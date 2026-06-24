@@ -24,9 +24,6 @@ function fileReader($path)
     } elseif ($format == 'json') {
         return json_decode($file, true);
     } else {
-      throw new \Exception("It's unsupported format: $format");
+        throw new \Exception("It's unsupported format: $format");
     }
-
-
-
 }
