@@ -5,3 +5,30 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=dASSharya_php-project-48&metric=bugs)](https://sonarcloud.io/summary/new_code?id=dASSharya_php-project-48)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=dASSharya_php-project-48&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=dASSharya_php-project-48)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=dASSharya_php-project-48&metric=coverage)](https://sonarcloud.io/summary/new_code?id=dASSharya_php-project-48)
+
+Вычислитель отличий / Difference Calculator
+
+CLI-утилита для сравнения двух конфигурационных файлов (JSON, YAML)
+с поддержкой вложенных структур и несколькими форматами вывода.
+
+### Требования
+
+- PHP 8.1+
+- Composer
+
+### Установка
+
+```bash
+composer install
+
+Использование
+
+./bin/gendiff file1.json file2.json
+./bin/gendiff --format plain file1.yaml file2.yaml
+./bin/gendiff --format json file1.json file2.json
+
+Запуск тестов
+
+composer test
+
+---
